@@ -108,7 +108,7 @@ function App() {
   return (
     <StyledApp>
       <GlobalStyles />
-      <Developer>Developed by: Kleant Bajraktari</Developer>
+      <Developer>Zhvilluar nga: Kleant Bajraktari</Developer>
       <Header>Cic-Mic</Header>
       <Grid state={state} dispatch={dispatch} />
       <div>
