@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import GlobalStyles from "./ui/GlobalStyles";
-import Grid from "./ui/Grid";
+import Grid from "./components/Grid";
 import styled from "styled-components";
 import { checkWin } from "./utils/winner";
 
@@ -95,7 +95,10 @@ function reducer(state: State, action: Action): State {
     case "checkWin":
       return { ...state, winner: checkWin(state.squares) };
     case "checkDraw":
-      return { ...state, draw: true };
+      return {
+        ...state,
+        draw: true,
+      };
     case "newGame":
       return initialState;
     default:
@@ -111,24 +114,23 @@ function App() {
       <Developer>Zhvilluar nga: Kleant Bajraktari</Developer>
       <Header>Cic-Mic</Header>
       <Grid state={state} dispatch={dispatch} />
-      <div>
-        {state.winner && (
-          <Message>
-            {state.winner === "x" ? "X" : "O"} FITON!{" "}
-            <NewGame onClick={() => dispatch({ type: "newGame" })}>
-              Lojë e Re
-            </NewGame>
-          </Message>
-        )}
-        {state.draw && (
-          <Message>
-            Barazim!{" "}
-            <NewGame onClick={() => dispatch({ type: "newGame" })}>
-              Lojë e Re
-            </NewGame>
-          </Message>
-        )}
-      </div>
+
+      {state.winner && (
+        <Message>
+          {state.winner === "x" ? "X" : "O"} FITON!{" "}
+          <NewGame onClick={() => dispatch({ type: "newGame" })}>
+            Lojë e Re
+          </NewGame>
+        </Message>
+      )}
+      {state.draw && (
+        <Message>
+          Barazim!{" "}
+          <NewGame onClick={() => dispatch({ type: "newGame" })}>
+            Lojë e Re
+          </NewGame>
+        </Message>
+      )}
     </StyledApp>
   );
 }

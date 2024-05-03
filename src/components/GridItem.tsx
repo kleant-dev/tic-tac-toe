@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { GridProps } from "../App";
 import { useEffect, useState } from "react";
+import { checkWin } from "../utils/winner";
 
 const StyledGridItem = styled.div`
   border: 3px solid var(--color-borders);
@@ -64,10 +65,10 @@ function GridItem({ id, state, dispatch }: { id: number } & GridProps) {
     if (nOfValues > 4) {
       dispatch({ type: "checkWin" });
     }
-    if (nOfValues === 9) {
+    if (nOfValues === 9 && !state.winner && !checkWin(state.squares)) {
       dispatch({ type: "checkDraw" });
     }
-  }, [nOfValues, dispatch]);
+  }, [nOfValues, dispatch, state.squares, state.winner]);
   return <StyledGridItem onClick={handleClick}>{item}</StyledGridItem>;
 }
 
