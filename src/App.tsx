@@ -106,12 +106,15 @@ function reducer(state: State, action: Action): State {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const myName = "Kleant Bajraktari";
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <StyledApp>
       <GlobalStyles />
-      <Developer>Zhvilluar nga: Kleant Bajraktari</Developer>
+      <Developer>Zhvilluar nga: </Developer>
       <Header>Cic-Mic</Header>
       <Grid state={state} dispatch={dispatch} />
 
