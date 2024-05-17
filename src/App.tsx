@@ -107,7 +107,7 @@ function reducer(state: State, action: Action): State {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const myName = "Kleant Bajraktari";
+// const myName = "Kleant Bajraktari";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
